@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# unseen [pattern] -- Show unseen files, optionally matching pattern
+# Copyright (C) 2014 Barry Arthur <barry.arthur@gmail.com>
+#
+# Distributed under terms of the MIT license.
+
+seen=.seenit
+
+if [ ! -f $seen ]; then
+  echo "No '$seen' file."
+  exit 2
+fi
+
+filter="."
+if [ ! -z "$1" ]; then
+  filter="$1"
+fi
+
+rm -f $seen.sorted $seen.all
+find . -type f | grep -i "\.\(mpg\|mp4\|avi\|mkv\|rmvb\|rm\)$" | sed -e 's/^\.\///' | sort > $seen.all
+sed -e "s/^.*\t//" $seen | sort > $seen.sorted
+diff $seen.sorted $seen.all | grep "^>" | sed -e 's/^> //' | grep --color=never -i $filter
+rm -f $seen.sorted $seen.all

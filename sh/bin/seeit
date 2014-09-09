@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# seeit file -- Add file to seen list and watch it now
+# Copyright (C) 2014 Barry Arthur <barry.arthur@gmail.com>
+#
+# Distributed under terms of the MIT license.
+
+seen=.seenit
+
+if [ -z "$1" ]; then
+  echo "usage: seeit file\n\nAdds file to seen list and sees it."
+  exit 1
+fi
+
+if [ ! -f "$1" ]; then
+  echo "File not found: $1"
+  exit 1
+fi
+
+echo `date +"%Y-%m-%d_%H:%M:%S"` "\t$1" >>$seen
+mplayer -zoom -fs -really-quiet "$1"

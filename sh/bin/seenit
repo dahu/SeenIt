@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# seenit file-list -- Adds each file in file-list to the seen list
+# Copyright (C) 2014 Barry Arthur <barry.arthur@gmail.com>
+#
+# Distributed under terms of the MIT license.
+
+seen=.seenit
+
+if [ -z "$1" ]; then
+  echo "usage: seenit file-list\n\nAdds file-list to seen list."
+  exit 1
+fi
+
+now=`date +"%Y-%m-%d_%H:%M:%S"`
+
+for f in $*; do
+  if [ ! -f "$f" ]; then
+    echo "File not found: $f"
+  else
+    echo "$now\t$f" >>$seen
+  fi
+done

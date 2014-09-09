@@ -1,0 +1,25 @@
+SeenIt
+======
+
+__Knows what you've seen so you don't have to.__
+
+TIP: If you like SeenIt and want to share the W00t!, I'm grateful for
+https://www.gittip.com/bairuidahu/[tips] or
+http://of-vim-and-vigor.blogspot.com/[beverages].
+
+There are currently two implementations of the __seenit__ suite:
+
+The __seenit__ Bourne Shell suite provides the following scripts:
+
+* ++seeit file++       :: Add ++file++ to seen list and watch it now
+* ++seen pattern++     :: Show last time a file matching ++pattern++ was seen
+* ++seenit file-list++ :: Adds each file in ++file-list++ to the seen list
+* ++unseen [pattern]++ :: Show unseen files, optionally matching ++pattern++
+
+The __vid.fish__ Fish Shell script has the following commands:
+
+* ++see file++         :: Adds file to the .seenit file and shows it.
+* ++seen [pattern]++   :: Shows the seen files, optionally matching /pattern/.
+* ++seenit file-list++ :: Adds file-list to the .seenit file.
+* ++unseen [pattern]++ :: Shows unseen files, optionally matching /pattern/.
+* ++help [command]++   :: Shows all help, or optionally for command only.

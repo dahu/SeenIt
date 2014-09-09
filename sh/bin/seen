@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# seen pattern -- Show the last time a file matching pattern was seen
+# Copyright (C) 2014 Barry Arthur <barry.arthur@gmail.com>
+#
+# Distributed under terms of the MIT license.
+
+seen=.seenit
+
+if [ ! -f $seen ]; then
+  echo "No '$seen' file."
+  exit 2
+fi
+
+if [ -z "$1" ]; then
+  echo "usage: seen pattern\n\nShows the last time /pattern/ was seen."
+  exit 1
+fi
+
+grep -i "$1" $seen | tail -1
